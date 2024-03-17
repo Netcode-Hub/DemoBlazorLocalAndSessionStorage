@@ -1,0 +1,193 @@
+﻿@page "/"
+
+@rendermode InteractiveServer
+@using NetcodeHub.Packages.Extensions.LocalStorage
+@using NetcodeHub.Packages.Extensions.SessionStorage
+@inject ILocalStorageService localStorageService
+@inject ISessionStorageService sessionStorageService
+
+
+<h4>Set and Get String</h4>
+<h2>Content: @Content</h2>
+@* <button class="btn btn-primary m-2" @onclick="SetString">Set String </button>
+<button class="btn btn-primary m-2" @onclick="GetString">Get String </button> *@
+
+@*<div class="m-2 p-3">
+    Id: @entity.Id <br />
+    Name: @entity.Name  <br />
+    Email: @entity.Email <br />
+</div>
+
+ <button class="btn btn-primary m-2" @onclick="SetModel">Set Model </button>
+<button class="btn btn-primary m-2" @onclick="GetModel">Get Model </button> *@
+
+
+@* <div class="m-2 p-2">
+    @if (Entities != null)
+    {
+        @foreach (var i in Entities)
+        {
+            <div class="m-2 p-3">
+                Id: @i.Id <br />
+                Name: @i.Name  <br />
+                Email: @i.Email <br />
+            </div>
+        }
+    }
+</div>
+<button class="btn btn-primary m-2" @onclick="SetListModel">Set List Model </button>
+<button class="btn btn-primary m-2" @onclick="GetListModel">Get List Model </button>
+ *@
+
+ Count: [@Count]
+<button class="btn btn-primary m-2" @onclick="GetCount">Get Count</button>
+<button class="btn btn-primary m-2" @onclick="AddItemToLocal">Add Item To Local</button>
+
+
+@code {
+    string? Content;
+    // Local Storage // Session Storage
+
+    // Get and Set String as Unprotected
+    //==========================================================================================
+
+    //async Task SetString() => await localStorageService.SaveAsEncryptedStringAsync("key", "Netcode-Hub");
+    //async Task GetString() => Content = (await localStorageService.GetEncryptedItemAsStringAsync("key"));
+
+    //async Task SetString() => await sessionStorageService.SaveAsEncryptedStringAsync("key", "Netcode-Hub");
+    //async Task GetString() => Content = (await sessionStorageService.GetEncryptedItemAsStringAsync("key"));
+
+    //Get and Set String as Protected
+    //==========================================================================================
+
+    //async Task SetString() => await localStorageService.SaveAsEncryptedStringAsync("key", "Netcode-Hub");
+    //async Task GetString() => Content = (await localStorageService.GetEncryptedItemAsStringAsync("key"));
+
+    //async Task SetString() => await sessionStorageService.SaveAsEncryptedStringAsync("key", "Netcode-Hub");
+    //async Task GetString() => Content = (await sessionStorageService.GetEncryptedItemAsStringAsync("key"));
+
+
+
+
+    Entity entity = new();
+    Entity entity1 = new();
+
+    // Get and Set Model as Unprotected
+    //==========================================================================================
+    // async Task SetModel()
+    // {
+
+    //     entity1.Id = 1;
+    //     entity1.Name = "Netcode-Hub";
+    //     entity1.Email = "NetcodeHub@gmail.com";
+    //     await localStorageService.SaveItemAsModelAsync<Entity>("key", entity1);
+    // }
+    //async Task GetModel() => entity = await localStorageService.GetItemAsModelAsync<Entity>("key");
+
+    // async Task SetModel()
+    // {
+
+    //     entity1.Id = 1;
+    //     entity1.Name = "Netcode-Hub";
+    //     entity1.Email = "NetcodeHub@gmail.com";
+    //     await sessionStorageService.SaveItemAsModelAsync<Entity>("key", entity1);
+    // }
+    //async Task GetModel() => entity = await sessionStorageService.GetItemAsModelAsync<Entity>("key");
+
+
+
+    // Get and Set Model as Protected
+    //==========================================================================================
+    // async Task SetModel()
+    // {
+
+    //     entity1.Id = 1;
+    //     entity1.Name = "Netcode-Hub";
+    //     entity1.Email = "NetcodeHub@gmail.com";
+    //     await localStorageService.SaveEncryptedItemAsModelAsync<Entity>("key", entity1);
+    // }
+    // async Task GetModel() => entity = await localStorageService.GetEncryptedItemAsModelAsync<Entity>("key");
+
+
+    // async Task SetModel()
+    // {
+
+    //     entity1.Id = 1;
+    //     entity1.Name = "Netcode-Hub";
+    //     entity1.Email = "NetcodeHub@gmail.com";
+    //     await sessionStorageService.SaveEncryptedItemAsModelAsync<Entity>("key", entity1);
+    // }
+    // async Task GetModel() => entity = await sessionStorageService.GetEncryptedItemAsModelAsync<Entity>("key");
+
+
+
+    List<Entity> Entities = [];
+
+    // Get and Set List<T> as Unprotected
+    //==========================================================================================
+    // async Task SetListModel()
+    // {
+
+    //     entity1.Id = 1;
+    //     entity1.Name = "Netcode-Hub";
+    //     entity1.Email = "NetcodeHub@gmail.com";
+    //     await localStorageService.AddItemToListAsync<Entity>("key", entity1);
+    // }
+    // async Task GetListModel() => Entities = await localStorageService.GetItemListAsync<Entity>("key");
+
+    // async Task SetListModel()
+    // {
+
+    //     entity1.Id = 1;
+    //     entity1.Name = "Netcode-Hub";
+    //     entity1.Email = "NetcodeHub@gmail.com";
+    //     await sessionStorageService.AddItemToListAsync<Entity>("key", entity1);
+    // }
+    // async Task GetListModel() => Entities = await sessionStorageService.GetItemListAsync<Entity>("key");
+
+
+
+    // Get and Set List<T> as Unprotected
+    //==========================================================================================
+    // async Task SetListModel()
+    // {
+
+    //     entity1.Id = 1;
+    //     entity1.Name = "Netcode-Hub";
+    //     entity1.Email = "NetcodeHub@gmail.com";
+    //     await localStorageService.AddItemToEncryptedListAsync<Entity>("key", entity1);
+    // }
+    // async Task GetListModel() => Entities = await localStorageService.GetEncryptedItemListAsync<Entity>("key");
+
+    // async Task SetListModel()
+    // {
+
+    //     entity1.Id = 1;
+    //     entity1.Name = "Netcode-Hub";
+    //     entity1.Email = "NetcodeHub@gmail.com";
+    //     await sessionStorageService.AddItemToEncryptedListAsync<Entity>("key", entity1);
+    // }
+    // async Task GetListModel() => Entities = await sessionStorageService.GetEncryptedItemListAsync<Entity>("key");
+
+    async Task AddItemToLocal()
+    {
+        entity1.Id = 1;
+        entity1.Name = "Netcode-Hub";
+        entity1.Email = "NetcodeHub@gmail.com";
+        await localStorageService.AddItemToListAsync<Entity>("key", entity1);
+    }
+    int Count;
+    async Task GetCount() => Count = await localStorageService.GetItemsCountAsync<Entity>("key");
+    async Task GetEncryptedCount() => Count = await localStorageService.GetEncryptedItemsCountAsync<Entity>("key");
+    async Task GetSessionCount() => Count = await sessionStorageService.GetItemsCountAsync<Entity>("key");
+    async Task DeleteLocalItem() => await localStorageService.DeleteItemAsync("key");
+    async Task ClearLocalStorage() => await localStorageService.ClearAllItemsAsync();
+    async Task DeleteSessionItem() => await sessionStorageService.DeleteItemAsync("key");
+    async Task ClearSessionStorage() => await sessionStorageService.ClearAllItemsAsync();
+    public class Entity
+    {
+        public int Id { get; set; }
+        public string? Name { get; set; }
+        public string? Email { get; set; }
+    }
+}
